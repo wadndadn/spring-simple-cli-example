@@ -12,7 +12,7 @@
     <artifactId>example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-simple-cli-example</name>
-    <description>Example Spring Boot CLI application using SimpleCommandLinePropertySource from Spring Framework.</description>
+    <description>Example Spring Boot CLI application using SimpleCommandLinePropertySource from Spring Framework</description>
     <properties>
         <java.version>17</java.version>
     </properties>
