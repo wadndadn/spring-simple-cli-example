@@ -16,16 +16,38 @@
 
 package de.wadndadn.springsimplecli.example;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.PropertySource;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
 
+@Slf4j
 @SpringBootApplication
 public class SpringSimpleCliExampleApplication {
 
-    public static void main(String[] args) {
-        SimpleCommandLinePropertySource sclps;
+    public static void main(final String[] args) {
+        final PropertySource<?> propertySource = createPropertySource(args);
+
+        if (log.isInfoEnabled()) {
+            log.info("Name: '{}'", propertySource.getName());
+            log.info("Source: '{}'", propertySource.getSource());
+        }
 
         SpringApplication.run(SpringSimpleCliExampleApplication.class, args);
+    }
+
+    private static PropertySource<?> createPropertySource(final String[] args) {
+        if (log.isInfoEnabled()) {
+            log.info("Create property source for command line arguments: '{}'", (Object) args);
+        }
+
+        final PropertySource<?> propertySource = new SimpleCommandLinePropertySource(args);
+
+        if (log.isInfoEnabled()) {
+            log.info("Created property source: '{}'", propertySource);
+        }
+
+        return propertySource;
     }
 }
